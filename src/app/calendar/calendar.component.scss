@@ -1,0 +1,13 @@
+:host ::ng-deep .calendar {
+        width: 96%;
+        transform: translateX(2%);
+        margin-top: 20px;
+
+        .fc-time-grid-container, .fc-day-grid-container {
+            height: auto !important;
+        }
+
+        .fc-dayGrid-view .fc-body .fc-row {
+            max-height: 13vh;
+        }
+    }
