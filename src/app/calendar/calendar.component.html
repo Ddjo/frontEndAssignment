@@ -1,5 +1,20 @@
 
 <div class="calendar-block">
+    <div class="event-modal" *ngIf="selectedEvent" cdkDrag #eventModal>
+        <div class="moving-header" cdkDragHandle>
+            <span class="pi pi-times" (click)="closeEventModal()"></span>
+        </div>
+        <hr>
+        <app-event [(currentEvent)]="selectedEvent"></app-event>
+    </div>
     <app-calendar-header></app-calendar-header>
-    <p-fullCalendar class="calendar" [styleClass]="'calendar'" [events]="events" [options]="calendarOptions"></p-fullCalendar>
+    <full-calendar class="calendar" 
+    [events]="events" 
+    [header]="calendarHeaders"
+    defaultView = "timeGridWeek"
+    editable="true"
+    eventLimit= "false"
+    [plugins]="calendarPlugins"
+    (eventClick)="eventClick($event.event)"
+    (dateClick)="dateClick($event)"></full-calendar>
 </div>

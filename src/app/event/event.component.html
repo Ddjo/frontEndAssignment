@@ -1,0 +1,60 @@
+<div class="event-container">
+  <form [formGroup]="eventForm">
+    
+    <div class="event-modal-line event-title">
+        <span>Title</span>
+        <input class="ui-inputtext" type="text" formControlName="title">
+    </div>
+
+    <div class="event-modal-line event-entire-day">
+        <span>Entire day</span>      
+        <input type="checkbox" value="entireDay" id="entireDay" formControlName="entireDay">
+      </div>
+  
+    <div class="event-modal-line event-start-day">
+      <span>Start date:</span>      
+      <p-calendar [readonlyInput]="true" formControlName="startDate"> </p-calendar>
+    </div>
+
+    <div class="event-modal-line event-start-time" *ngIf="!eventForm.controls['entireDay'].value">
+      <span>Start time:</span>      
+      <div class="start-time-select">
+        <select class="ui-inputtext">
+            <option *ngFor="let hour of hoursArray" [value]="hour" >{{hour}}</option>
+        </select>
+        :
+        <select class="ui-inputtext">
+            <option *ngFor="let minute of minutesArray" [value]="minute">{{minute}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="event-modal-line event-end">
+        <span>End date:</span>
+        <p-calendar [readonlyInput]="true" formControlName="endDate"> </p-calendar>  
+    </div>
+
+    <div class="event-modal-line event-end-time" *ngIf="!eventForm.controls['entireDay'].value">
+      <span>End time:</span>      
+      <div class="end-time-select">
+        <select class="ui-inputtext">
+            <option *ngFor="let hour of hoursArray" [value]="hour" >{{hour}}</option>
+        </select>
+        :
+        <select class="ui-inputtext">
+            <option *ngFor="let minute of minutesArray" [value]="minute">{{minute}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="event-modal-line event-user">
+        <span>User :</span>
+        <select class="ui-inputtext">
+            <option *ngFor="let user of usersArray" [value]="user.id">{{user.name}}</option>
+        </select>
+    </div>
+  </form>
+
+  <span class="pi pi-trash"></span>
+  <span class="pi pi-save"></span>
+</div>

@@ -13,7 +13,7 @@ export class CalendarHeaderComponent implements OnInit {
 
   users: IUser[] = [];
 
-  constructor(private usersService: UsersService) { 
+  constructor(private usersService: UsersService) {
     this.usersService.getUsers().subscribe((users) => {
         // Return user list formatted in order to be multiselected
       this.users = users.map(user => {

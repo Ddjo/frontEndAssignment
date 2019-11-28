@@ -3,36 +3,99 @@
         "id": 0,
         "name": "user A",
         "events" : [
-            {
+            {                
                 "title": "All Day Event",
-                "start": "2019-11-01"
+                "start": "2019-11-27",                                
+                "color": "purple"
             },
             {
                 "title": "Long Event",
                 "start": "2019-11-07",
-                "end": "2019-11-10"
+                "end": "2019-11-10",
+                "color": "purple"
             },
             {
                 "title": "Repeating Event",
-                "start": "2019-11-09T16:00:00"
+                "start": "2019-11-09T16:00:00",
+                "color": "purple"
             },
             {
                 "title": "Repeating Event",
-                "start": "2019-11-27T16:00:00"
+                "start": "2019-11-27T16:00:00",
+                "color": "purple"
             },
             {
                 "title": "Conference",
                 "start": "2019-11-11",
-                "end": "2019-11-13"
+                "end": "2019-11-13",
+                "color": "purple"
             }
         ]
     },
     {
         "id": 1,
-        "name": "user B"
+        "name": "user B",
+        "events" : [
+            {                
+                "title": "All Day Event",
+                "start": "2019-11-27",                                
+                "color": "red"
+            },
+            {
+                "title": "Long Event",
+                "start": "2019-11-07",
+                "end": "2019-11-10",
+                "color": "red"
+            },
+            {
+                "title": "Repeating Event",
+                "start": "2019-11-09T16:00:00",
+                "color": "red"
+            },
+            {
+                "title": "Repeating Event",
+                "start": "2019-11-27T16:00:00",
+                "color": "red"
+            },
+            {
+                "title": "Conference",
+                "start": "2019-11-11",
+                "end": "2019-11-13",
+                "color": "red"
+            }
+        ]
     },
     {
         "id": 2,
-        "name": "user C"
+        "name": "user C",
+        "events" : [
+            {                
+                "title": "All Day Event",
+                "start": "2019-11-27",                                
+                "color": "blue"
+            },
+            {
+                "title": "Long Event",
+                "start": "2019-11-07",
+                "end": "2019-11-10",
+                "color": "blue"
+            },
+            {
+                "title": "Repeating Event",
+                "start": "2019-11-09T16:00:00",
+                "color": "blue"
+            },
+            {
+                "title": "Repeating Event",
+                "start": "2019-11-27T16:00:00",
+                "color": "blue"
+            },
+            {
+                "title": "Conference",
+                "start": "2019-11-11",
+                "end": "2019-11-13",
+                "color": "blue"
+            }
+        ]
     }
 ]

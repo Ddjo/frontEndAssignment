@@ -2,6 +2,37 @@
         width: 96%;
         transform: translateX(2%);
         margin-top: 20px;
+
+        .event-modal {
+            width: 300px;            
+            background-color: #fcf8e3;
+            position: absolute;
+            z-index: 2;
+            box-shadow: 2px 1px 5px 0px rgba(0,0,0,0.75);
+            border-radius: 4px;
+            animation: EventModalAppears 0.3s;
+
+            &.modal-disappear {
+                animation: EventModalDisappears 0.25s;
+            }
+
+            .moving-header {
+                height: 30px;
+                cursor: move;
+
+                .pi-times {
+                    right: 0px;
+                    position: absolute;
+                    font-size: 1.7em;
+                    cursor: pointer;
+                }
+            }
+
+            hr {
+                width: 90%;
+                margin-top: 6px;
+            }
+        }
         
         .calendar {
             .fc-time-grid-container, .fc-day-grid-container {
@@ -11,5 +42,25 @@
             .fc-dayGrid-view .fc-body .fc-row {
                 max-height: 13vh;
             }
+
+            .fc-event-container {
+                cursor: pointer;
+                transition: 0.2s;
+
+                &:hover {
+                    font-size: 1.05em;                    
+                }
+            }
         }
     }
+
+    @keyframes EventModalAppears {
+        from {opacity: 0;}
+        to {opacity: 1;}
+    }
+
+    @keyframes EventModalDisappears {
+        from {opacity: 1;}
+        to {opacity: 0;}
+    }
+    
