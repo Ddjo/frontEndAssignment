@@ -13,13 +13,15 @@ import {CalendarModule} from 'primeng/calendar';
 import { EventComponent } from './event/event.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {DragDropModule } from '@angular/cdk/drag-drop';
+import { SingleTimeNumberPipePipe } from './shared/pipes/single-time-number-pipe.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     CalendarComponent,
     CalendarHeaderComponent,
-    EventComponent
+    EventComponent,
+    SingleTimeNumberPipePipe
   ],
   imports: [
     BrowserModule,

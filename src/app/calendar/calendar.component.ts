@@ -38,36 +38,66 @@ export class CalendarComponent implements OnInit {
           'id': 9999,
           'title': 'All Day Event',
           'start': '2019-11-28',
-          'userId': 1,
-          'color': 'purple'
+          'color': 'purple',
+          extendedProps: {
+            'userId': 1,
+            'entireDay': true
+          },
       },
       {
           'title': 'Long Event',
           'start': '2019-11-07',
-          'end': '2019-11-10'
+          'end': '2019-11-10',
+          extendedProps: {
+            'userId': 1,
+            'entireDay': true
+          },
       },
       {
           'title': 'Repeating Event',
-          'start': '2019-11-09T16:00:00'
+          'start': '2019-11-09T16:00:00',
+          extendedProps: {
+            'userId': 1,
+            'entireDay': false
+          },
       },
       {
           'title': 'Repeating Event',
-          'start': '2019-11-16T16:00:00'
+          'start': '2019-11-27T16:54:00',
+          'end': '2019-11-28T12:12:00',
+          extendedProps: {
+            'userId': 1,
+            'entireDay': false
+          },
       },
       {
           'title': 'Conference',
           'start': '2019-11-11',
-          'end': '2019-11-13'
+          'end': '2019-11-13',
+          extendedProps: {
+            'userId': 1,
+            'entireDay': true
+          },
       }
   ];
   }
 
   eventClick(event: IEvent) {
     this.selectedEvent = event;
+    console.log(this.selectedEvent);
   }
 
   dateClick(event) {
     console.log(event);
+
+    this.selectedEvent = {
+      title: '',
+      start: event.date,
+      extendedProps : {
+        entireDay: event.allDay,
+        userId: null
+      }
+    };
   }
 
   closeEventModal() {
