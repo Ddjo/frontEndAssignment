@@ -1,0 +1,12 @@
+<div class="header">
+    <div class="user-selection">
+        <label class="user-select-label"> Select user : </label>
+        <p-multiSelect [options]="users" [showHeader]="false" [(ngModel)]="selectedUsers"></p-multiSelect>
+    </div>
+    <div class="date-selection">
+        <label class="date-select-label"> Go to date: </label>
+        <span class="pi pi-calendar" (click)="openDatePicker()"></span>
+        <p-calendar [(ngModel)]="selectedDate" [readonlyInput]="true" #datePicker> </p-calendar>
+        
+    </div>
+</div>

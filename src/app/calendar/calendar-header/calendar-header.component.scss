@@ -1,0 +1,47 @@
+:host ::ng-deep .header {
+    height: 60px;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .user-selection {
+        display: flex;
+        align-items: center;
+
+        .user-select-label {
+            margin-right: 20px;
+        }
+
+        .ui-multiselect{
+            width: 200px;
+        }
+    }
+
+    .date-selection {
+        display: flex;
+        align-items: center;
+
+        .date-select-label {
+            margin-right: 20px;
+        }
+
+        .pi-calendar {
+            color: #ffffff;
+            background-color: #007ad9;
+            border: 1px solid #007ad9;
+            font-size: 25px;
+            top: -4px;
+            border-radius: 4px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        p-calendar {
+            input {
+                visibility: hidden;
+                position: absolute;
+            }
+        }
+    }
+}
