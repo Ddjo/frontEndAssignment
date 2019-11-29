@@ -13,6 +13,7 @@ import {CalendarModule} from 'primeng/calendar';
 import { EventComponent } from './event/event.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {DragDropModule } from '@angular/cdk/drag-drop';
+import {DropdownModule} from 'primeng/dropdown';
 import { SingleTimeNumberPipePipe } from './shared/pipes/single-time-number-pipe.pipe';
 
 @NgModule({
@@ -32,7 +33,8 @@ import { SingleTimeNumberPipePipe } from './shared/pipes/single-time-number-pipe
     MultiSelectModule,
     HttpClientModule,
     ReactiveFormsModule,
-    DragDropModule
+    DragDropModule,
+    DropdownModule
   ],
   providers: [
     UsersService

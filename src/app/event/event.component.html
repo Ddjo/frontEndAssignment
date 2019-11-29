@@ -53,9 +53,14 @@
 
     <div class="event-modal-line event-user">
         <span>User :</span>
-        <select class="ui-inputtext" formControlName="user">
-            <option *ngFor="let user of usersArray" [value]="user.id">{{user.name}}</option>
-        </select>
+        <p-dropdown [options]="usersArray" formControlName="user">
+            <ng-template let-user pTemplate="selectedItem">                 
+                <span [ngStyle]="{'background-color': user.color}" class="user-item">{{user.label}}</span>
+            </ng-template>
+            <ng-template let-user pTemplate="item">          
+                <div [ngStyle]="{'background-color': user.color}" class="user-item">{{user.label}}</div>
+            </ng-template>
+        </p-dropdown>
     </div>
 
     <div class="event-modal-line error-line" *ngIf="f.user.errors && formSubmitted">

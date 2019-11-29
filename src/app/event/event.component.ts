@@ -41,7 +41,9 @@ export class EventComponent implements OnChanges {
 
   constructor(private usersService: UsersService) {
     this.usersService.getUsers().subscribe((users) => {
-        this.usersArray = users;
+        this.usersArray = users.map(user => {
+          return {value: user.id, label: user.name, color: user.color};
+        });
       });
   }
 

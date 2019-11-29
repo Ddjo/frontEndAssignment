@@ -14,7 +14,20 @@
         }
 
         .ui-multiselect{
-            width: 200px;
+            min-width: 200px;
+            height: 40px;
+
+            .ui-multiselect-label {
+                display: flex;
+            }
+
+            .user-item {
+                padding: 4px 12px;
+                margin: 0px 4px;
+                float: right;
+                border-radius: 4px;
+                color:white
+            }
         }
     }
 

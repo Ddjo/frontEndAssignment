@@ -1,4 +1,4 @@
-.event-container {    
+:host ::ng-deep .event-container {    
     padding-bottom: 50px;
 
     .event-modal-line {
@@ -7,8 +7,14 @@
         align-items: center;
         margin: 10px 20px;
 
-        &.event-user select {
+        &.event-user {
             min-width: 162px;
+
+            .user-item {
+                padding: 4px 12px;
+                border-radius: 4px;
+                color:white    
+            }
         }
 
         &.error-line {

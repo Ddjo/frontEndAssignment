@@ -2,6 +2,7 @@
     {
         "id": 0,
         "name": "user A",
+        "color": "purple",
         "events" : [
             {                
                 "title": "All Day Event",
@@ -35,6 +36,7 @@
     {
         "id": 1,
         "name": "user B",
+        "color": "red",
         "events" : [
             {                
                 "title": "All Day Event",
@@ -68,6 +70,7 @@
     {
         "id": 2,
         "name": "user C",
+        "color": "blue",
         "events" : [
             {                
                 "title": "All Day Event",

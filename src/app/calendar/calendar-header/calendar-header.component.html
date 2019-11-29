@@ -1,7 +1,19 @@
 <div class="header">
     <div class="user-selection">
         <label class="user-select-label"> Select user : </label>
-        <p-multiSelect [options]="users" [showHeader]="false" [(ngModel)]="selectedUsers"></p-multiSelect>
+        <p-multiSelect [options]="usersToDisplay" [showHeader]="false" [(ngModel)]="selectedUsers">
+            <ng-template let-value pTemplate="selectedItems">
+                <div *ngFor="let val of value" [ngStyle]="{'background-color': getUserFromId(val).color}" 
+                class=" user-item ui-multiselected-item-token ui-corner-all">
+                    <span>{{getUserFromId(val).label}}</span>
+                </div>
+                <span *ngIf="!value || value.length === 0" class="ui-multiselected-empty-token ui-corner-all">Choose</span>
+            </ng-template>
+        
+            <ng-template let-user pTemplate="item">
+                <div [ngStyle]="{'background-color': user.color}" class="user-item">{{user.label}}</div>
+            </ng-template>
+        </p-multiSelect>
     </div>
     <div class="date-selection">
         <label class="date-select-label"> Go to date: </label>

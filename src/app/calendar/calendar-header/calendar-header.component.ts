@@ -11,13 +11,14 @@ export class CalendarHeaderComponent implements OnInit {
 
   @ViewChild('datePicker', {static: false}) datePicker: any;
 
-  users: IUser[] = [];
+  usersToDisplay: any[] = [];
+  selectedUsers: string[] = [];
 
   constructor(private usersService: UsersService) {
     this.usersService.getUsers().subscribe((users) => {
         // Return user list formatted in order to be multiselected
-      this.users = users.map(user => {
-        return {value: user.id, label: user.name};
+      this.usersToDisplay = users.map(user => {
+        return {value: user.id, label: user.name, color: user.color};
       });
     });
   }
@@ -27,6 +28,10 @@ export class CalendarHeaderComponent implements OnInit {
 
   openDatePicker() {
     this.datePicker.toggle();
+  }
+
+  getUserFromId(id) {
+    return this.usersToDisplay.find( x => x.value === id);
   }
 
 }
