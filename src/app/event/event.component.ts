@@ -1,8 +1,9 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { IEvent, IUser } from '../models/IUser';
-import { UsersService } from '../users/users.service';
+import { UserService } from '../user/user.service';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { IEvent } from '../models/event-data/IEvent';
+import { IUser } from '../models/user-data/IUser';
 
 @Component({
   selector: 'app-event',
@@ -39,8 +40,8 @@ export class EventComponent implements OnChanges {
 
   usersArray: IUser[];
 
-  constructor(private usersService: UsersService) {
-    this.usersService.getUsers().subscribe((users) => {
+  constructor(private userService: UserService) {
+    this.userService.getUsers().subscribe((users) => {
         this.usersArray = users.map(user => {
           return {value: user.id, label: user.name, color: user.color};
         });

@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { IUser } from 'src/app/models/IUser';
-import { UsersService } from 'src/app/users/users.service';
-
+import { Store, select } from '@ngrx/store';
+import { AppState, users } from 'src/app/reducers';
 @Component({
   selector: 'app-calendar-header',
   templateUrl: './calendar-header.component.html',
@@ -11,13 +10,14 @@ export class CalendarHeaderComponent implements OnInit {
 
   @ViewChild('datePicker', {static: false}) datePicker: any;
 
+  // users$: Observable<UserData[]>;
   usersToDisplay: any[] = [];
   selectedUsers: string[] = [];
 
-  constructor(private usersService: UsersService) {
-    this.usersService.getUsers().subscribe((users) => {
-        // Return user list formatted in order to be multiselected
-      this.usersToDisplay = users.map(user => {
+  constructor(private store: Store<AppState>) {
+    // Get the user list from the store to display it in the dropdown list
+    this.store.pipe(select(users)).subscribe(usersList => {
+      this.usersToDisplay = usersList.map(user => {
         return {value: user.id, label: user.name, color: user.color};
       });
     });
@@ -32,6 +32,10 @@ export class CalendarHeaderComponent implements OnInit {
 
   getUserFromId(id) {
     return this.usersToDisplay.find( x => x.value === id);
+  }
+
+  changeSelectedUsers(event) {
+    console.log(event);
   }
 
 }

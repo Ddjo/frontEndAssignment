@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable()
-export class UsersService {
+export class UserService {
 
    constructor(private http: HttpClient) {
     }

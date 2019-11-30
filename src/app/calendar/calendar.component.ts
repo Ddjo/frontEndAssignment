@@ -1,18 +1,19 @@
-import { Component, OnInit, ViewChild, Renderer2, ElementRef } from '@angular/core';
-import { OptionsInput, EventInput} from '@fullcalendar/core';
+import { Component, ViewChild, Renderer2, ElementRef } from '@angular/core';
+import { OptionsInput} from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
-import { EventComponent } from '../event/event.component';
-import { FullCalendarComponent } from '@fullcalendar/angular';
-import { IEvent } from '../models/IUser';
+import { IEvent } from '../models/event-data/IEvent';
+import { Store } from '@ngrx/store';
+import { AppState } from '../reducers';
+import { LoadUsers } from '../actions/user.actions';
 
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss']
 })
-export class CalendarComponent implements OnInit {
+export class CalendarComponent {
 
   @ViewChild('eventModal', {static: false}) eventModal: ElementRef;
 
@@ -28,58 +29,8 @@ export class CalendarComponent implements OnInit {
   events: any[];
   selectedEvent: IEvent;
 
-  constructor(private renderer: Renderer2) {
-  }
-
-  ngOnInit() {
-
-    this.events = [
-      {
-          'id': 9999,
-          'title': 'All Day Event',
-          'start': '2019-11-28',
-          'color': 'purple',
-          extendedProps: {
-            'userId': 1,
-            'entireDay': true
-          },
-      },
-      {
-          'title': 'Long Event',
-          'start': '2019-11-07',
-          'end': '2019-11-10',
-          extendedProps: {
-            'userId': 1,
-            'entireDay': true
-          },
-      },
-      {
-          'title': 'Repeating Event',
-          'start': '2019-11-09T16:00:00',
-          extendedProps: {
-            'userId': 1,
-            'entireDay': false
-          },
-      },
-      {
-          'title': 'Repeating Event',
-          'start': '2019-11-27T16:54:00',
-          'end': '2019-11-28T12:12:00',
-          extendedProps: {
-            'userId': 1,
-            'entireDay': false
-          },
-      },
-      {
-          'title': 'Conference',
-          'start': '2019-11-11',
-          'end': '2019-11-13',
-          extendedProps: {
-            'userId': 1,
-            'entireDay': true
-          },
-      }
-  ];
+  constructor(private renderer: Renderer2, private store: Store<AppState>) {
+    this.store.dispatch(new LoadUsers());
   }
 
   eventClick(event: IEvent) {

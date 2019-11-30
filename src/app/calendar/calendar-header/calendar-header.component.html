@@ -1,7 +1,7 @@
 <div class="header">
     <div class="user-selection">
         <label class="user-select-label"> Select user : </label>
-        <p-multiSelect [options]="usersToDisplay" [showHeader]="false" [(ngModel)]="selectedUsers">
+        <p-multiSelect [options]="usersToDisplay" [showHeader]="false" [(ngModel)]="selectedUsers" (onChange)="changeSelectedUsers($event)">
             <ng-template let-value pTemplate="selectedItems">
                 <div *ngFor="let val of value" [ngStyle]="{'background-color': getUserFromId(val).color}" 
                 class=" user-item ui-multiselected-item-token ui-corner-all">
