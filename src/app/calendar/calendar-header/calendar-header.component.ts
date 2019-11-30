@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { AppState, users } from 'src/app/reducers';
+import { AppState, users } from 'src/app/reducers/';
+import { UpdateUsersFilter } from 'src/app/actions/user/user.actions';
 @Component({
   selector: 'app-calendar-header',
   templateUrl: './calendar-header.component.html',
@@ -35,7 +36,7 @@ export class CalendarHeaderComponent implements OnInit {
   }
 
   changeSelectedUsers(event) {
-    console.log(event);
+    this.store.dispatch(new UpdateUsersFilter(event.value));
   }
 
 }

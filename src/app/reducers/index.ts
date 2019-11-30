@@ -4,8 +4,7 @@ import {
 } from '@ngrx/store';
 import { environment } from '../../environments/environment';
 import { UserData } from '../models/user-data/user-data';
-import { UserActions, UserActionTypes } from '../actions/user.actions';
-
+import { UserActions, UserActionTypes } from '../actions/user/user.actions';
 
 export interface UserState {
   users: UserData[];
@@ -38,6 +37,14 @@ export function userReducer(state: UserState = initialUserState, action: UserAct
           selectedUsers: []
         };
 
+    case UserActionTypes.UpdateUsersFilter :
+        return {
+          users: state.users,
+          selectedUsers: state.users.filter((user) => {
+            return action.payload.find(x => x === user.id);
+            })
+        };
+
     default:
       return state;
   }
@@ -48,5 +55,7 @@ export const reducers: ActionReducerMap<AppState> = {
 };
 
 export const users = (state: AppState) => state.user.users;
+
+export const selectedUsers = (state: AppState) => state.user.selectedUsers;
 
 export const metaReducers: MetaReducer<any>[] = !environment.production ? [] : [];

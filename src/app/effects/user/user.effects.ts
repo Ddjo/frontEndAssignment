@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { map, mergeMap, catchError } from 'rxjs/operators';
 import { Actions, createEffect, Effect, ofType } from '@ngrx/effects';
-import { LoadUsers, UserActionTypes, UserError, LoadUsersComplete } from '../actions/user.actions';
+import { LoadUsers, UserActionTypes, UserError, LoadUsersComplete } from '../../actions/user/user.actions';
 import { Store } from '@ngrx/store';
-import { AppState, users } from '../reducers';
-import { UserService } from '../user/user.service';
+import { AppState, users } from '../../reducers/';
+import { UserService } from '../../user/user.service';
 import { of } from 'rxjs';
 
 
@@ -12,7 +12,6 @@ import { of } from 'rxjs';
 export class UserEffects {
 
 
-// test test
   @Effect()
   loadUsers$ = this.actions$
   .pipe(

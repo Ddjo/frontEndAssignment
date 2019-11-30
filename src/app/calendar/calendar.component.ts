@@ -4,9 +4,9 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { IEvent } from '../models/event-data/IEvent';
-import { Store } from '@ngrx/store';
-import { AppState } from '../reducers';
-import { LoadUsers } from '../actions/user.actions';
+import { Store, select } from '@ngrx/store';
+import { AppState, selectedUsers } from '../reducers/';
+import { LoadUsers } from '../actions/user/user.actions';
 
 @Component({
   selector: 'app-calendar',
@@ -26,11 +26,21 @@ export class CalendarComponent {
   };
   calendarWeekends = true;
 
-  events: any[];
+  events: IEvent[];
   selectedEvent: IEvent;
 
   constructor(private renderer: Renderer2, private store: Store<AppState>) {
     this.store.dispatch(new LoadUsers());
+
+    // Get the event list of the selected users from the store
+    this.store.pipe(select(selectedUsers)).subscribe(users => {
+      this.events = [];
+
+      users.forEach(user => {
+        this.events  = this.events.concat(user.events);
+      });
+
+    });
   }
 
   eventClick(event: IEvent) {
@@ -60,5 +70,4 @@ export class CalendarComponent {
       this.selectedEvent = null;
     }, 200);
   }
-
 }

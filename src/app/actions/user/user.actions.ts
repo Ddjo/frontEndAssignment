@@ -1,10 +1,10 @@
 import { Action } from '@ngrx/store';
-import { UserData } from '../models/user-data/user-data';
+import { UserData } from '../../models/user-data/user-data';
 
 export enum UserActionTypes {
   LoadUsers = '[User] Load users',
   LoadUsersComplete = '[User] Load users complete',
-  UpdateUserFilter = '[User] update user filter',
+  UpdateUsersFilter = '[User] update user filter',
   CreateEventForUser = '[User] Create event for user',
   UpdateEventForUser = '[User] Update event for user',
   RemoveEventForUser = '[User] remove event for user',
@@ -23,11 +23,11 @@ export class LoadUsersComplete implements Action {
   constructor(public payload: UserData[]) {}
 }
 
-// export class UpdateUserFilter implements Action {
-//   readonly type = UserActionTypes.UpdateUserFilter;
+export class UpdateUsersFilter implements Action {
+  readonly type = UserActionTypes.UpdateUsersFilter;
 
-//   constructor(public payload: UserData[]) {}
-// }
+  constructor(public payload: number[]) {}
+}
 
 // export class CreateEventForUser implements Action {
 //   readonly type = UserActionTypes.LoadUsers;
@@ -58,9 +58,7 @@ export class UserError implements Action {
 
 export type UserActions = LoadUsers
                           | LoadUsersComplete
-                          // | CreateEventForUser
-                          // | UpdateEventForUser
-                          // | RemoveEventForUser
+                          | UpdateUsersFilter
                           | UserError
                           ;
 

@@ -16,11 +16,11 @@ import {DragDropModule } from '@angular/cdk/drag-drop';
 import {DropdownModule} from 'primeng/dropdown';
 import { SingleTimeNumberPipePipe } from './shared/pipes/single-time-number-pipe.pipe';
 import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './reducers';
+import { reducers, metaReducers } from './reducers/';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
-import { UserEffects } from './effects/user.effects';
+import { UserEffects } from './effects/user/user.effects';
 
 @NgModule({
   declarations: [

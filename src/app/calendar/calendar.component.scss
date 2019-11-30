@@ -1,39 +1,39 @@
+:host ::ng-deep .event-modal {
+    width: 300px;            
+    background-color: #fcf8e3;
+    position: fixed;
+    z-index: 2;
+    box-shadow: 2px 1px 5px 0px rgba(0,0,0,0.75);
+    border-radius: 4px;
+    animation: EventModalAppears 0.3s;
+
+    &.modal-disappear {
+        animation: EventModalDisappears 0.25s;
+    }
+
+    .moving-header {
+        height: 30px;
+        cursor: move;
+
+        .pi-times {
+            right: 0px;
+            position: absolute;
+            font-size: 1.7em;
+            cursor: pointer;
+        }
+    }
+
+    hr {
+        width: 90%;
+        margin-top: 6px;
+    }
+}
+
 :host ::ng-deep .calendar-block {
         width: 96%;
         transform: translateX(2%);
         margin-top: 20px;
 
-        .event-modal {
-            width: 300px;            
-            background-color: #fcf8e3;
-            position: fixed;
-            z-index: 2;
-            box-shadow: 2px 1px 5px 0px rgba(0,0,0,0.75);
-            border-radius: 4px;
-            animation: EventModalAppears 0.3s;
-
-            &.modal-disappear {
-                animation: EventModalDisappears 0.25s;
-            }
-
-            .moving-header {
-                height: 30px;
-                cursor: move;
-
-                .pi-times {
-                    right: 0px;
-                    position: absolute;
-                    font-size: 1.7em;
-                    cursor: pointer;
-                }
-            }
-
-            hr {
-                width: 90%;
-                margin-top: 6px;
-            }
-        }
-        
         .calendar {
             .fc-time-grid-container, .fc-day-grid-container {
                 height: auto !important;

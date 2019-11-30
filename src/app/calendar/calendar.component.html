@@ -1,5 +1,3 @@
-
-<div class="calendar-block">
     <div class="event-modal" *ngIf="selectedEvent" cdkDrag #eventModal>
         <div class="moving-header" cdkDragHandle>
             <span class="pi pi-times" (click)="closeEventModal()"></span>
@@ -7,6 +5,7 @@
         <hr>
         <app-event [(currentEvent)]="selectedEvent"></app-event>
     </div>
+<div class="calendar-block">
     <app-calendar-header></app-calendar-header>
     <full-calendar class="calendar" 
     [events]="events" 

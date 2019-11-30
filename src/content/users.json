@@ -1,103 +1,165 @@
 [
     {
-        "id": 0,
+        "id": 1,
         "name": "user A",
         "color": "purple",
         "events" : [
             {                
                 "title": "All Day Event",
                 "start": "2019-11-27",                                
-                "color": "purple"
+                "color": "purple",
+                "extendedProps": {
+                    "userId": 1,
+                    "entireDay": true
+                  }
             },
             {
                 "title": "Long Event",
                 "start": "2019-11-07",
                 "end": "2019-11-10",
-                "color": "purple"
+                "color": "purple",
+                "extendedProps": {
+                    "userId": 1,
+                    "entireDay": true
+                  }
             },
             {
                 "title": "Repeating Event",
                 "start": "2019-11-09T16:00:00",
-                "color": "purple"
+                "color": "purple",
+                "extendedProps": {
+                    "userId": 1,
+                    "entireDay": false
+                  }
             },
             {
                 "title": "Repeating Event",
                 "start": "2019-11-27T16:00:00",
-                "color": "purple"
+                "color": "purple",
+                "extendedProps": {
+                    "userId": 1,
+                    "entireDay": false
+                  }
             },
             {
                 "title": "Conference",
                 "start": "2019-11-11",
                 "end": "2019-11-13",
-                "color": "purple"
-            }
-        ]
-    },
-    {
-        "id": 1,
-        "name": "user B",
-        "color": "red",
-        "events" : [
-            {                
-                "title": "All Day Event",
-                "start": "2019-11-27",                                
-                "color": "red"
-            },
-            {
-                "title": "Long Event",
-                "start": "2019-11-07",
-                "end": "2019-11-10",
-                "color": "red"
-            },
-            {
-                "title": "Repeating Event",
-                "start": "2019-11-09T16:00:00",
-                "color": "red"
-            },
-            {
-                "title": "Repeating Event",
-                "start": "2019-11-27T16:00:00",
-                "color": "red"
-            },
-            {
-                "title": "Conference",
-                "start": "2019-11-11",
-                "end": "2019-11-13",
-                "color": "red"
+                "color": "purple",
+                "extendedProps": {
+                    "userId": 1,
+                    "entireDay": true
+                  }
             }
         ]
     },
     {
         "id": 2,
-        "name": "user C",
-        "color": "blue",
+        "name": "user B",
+        "color": "red",
         "events" : [
             {                
                 "title": "All Day Event",
-                "start": "2019-11-27",                                
-                "color": "blue"
+                "start": "2019-11-29",                                
+                "color": "red",
+                "extendedProps": {
+                    "userId": 2,
+                    "entireDay": true
+                  }
             },
             {
                 "title": "Long Event",
                 "start": "2019-11-07",
                 "end": "2019-11-10",
-                "color": "blue"
+                "color": "red",
+                "extendedProps": {
+                    "userId": 2,
+                    "entireDay": true
+                }
             },
             {
                 "title": "Repeating Event",
-                "start": "2019-11-09T16:00:00",
-                "color": "blue"
+                "start": "2019-11-27T16:54:00",
+                "end": "2019-11-28T12:12:00",
+                "color": "red",
+                "extendedProps": {
+                  "userId": 2,
+                  "entireDay": false
+                }
             },
             {
                 "title": "Repeating Event",
                 "start": "2019-11-27T16:00:00",
-                "color": "blue"
+                "end": "019-11-28T9:43:00",
+                "color": "red",
+                "extendedProps": {
+                    "userId": 2,
+                    "entireDay": false
+                  }
             },
             {
                 "title": "Conference",
                 "start": "2019-11-11",
                 "end": "2019-11-13",
-                "color": "blue"
+                "color": "red",
+                "extendedProps": {
+                    "userId": 2,
+                    "entireDay": true
+                  }
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "name": "user C",
+        "color": "blue",
+        "events" : [
+            {                
+                "title": "All Day Event",
+                "start": "2019-11-24",                                
+                "color": "blue",
+                "extendedProps": {
+                    "userId": 3,
+                    "entireDay": true
+                  }
+            },
+            {
+                "title": "Long Event",
+                "start": "2019-11-07",
+                "end": "2019-11-10",
+                "color": "blue",
+                "extendedProps": {
+                    "userId": 3,
+                    "entireDay": true
+                  }
+            },
+            {
+                "title": "Repeating Event",
+                "start": "2019-11-09T16:00:00",
+                "color": "blue",
+                "extendedProps": {
+                    "userId": 3,
+                    "entireDay": false
+                  }
+            },
+            {
+                "title": "Repeating Event",
+                "start": "2019-11-24T16:00:00",
+                "color": "blue",
+                "extendedProps": {
+                    "userId": 3,
+                    "entireDay": false
+                  }
+            },
+            {
+                "title": "Conference",
+                "start": "2019-11-11",
+                "end": "2019-11-13",
+                "color": "blue",
+                "extendedProps": {
+                    "userId": 3,
+                    "entireDay": true
+                  }
             }
         ]
     }
