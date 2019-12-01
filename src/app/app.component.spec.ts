@@ -1,12 +1,30 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import { EventComponent } from './event/event.component';
+import { CalendarHeaderComponent } from './calendar/calendar-header/calendar-header.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { SingleTimeNumberPipe } from './shared/pipes/single-time-number-pipe.pipe';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './reducers';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        CalendarComponent,
+        CalendarHeaderComponent,
+        EventComponent,
+        SingleTimeNumberPipe,
       ],
+      imports: [
+        ReactiveFormsModule,
+        FormsModule,
+        StoreModule.forRoot(reducers),
+      ],
+      schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
   }));
 
@@ -16,16 +34,4 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'frontEndAssignment'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('frontEndAssignment');
-  });
-
-  it('should render title in a h1 tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to frontEndAssignment!');
-  });
 });

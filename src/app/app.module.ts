@@ -14,7 +14,7 @@ import { EventComponent } from './event/event.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {DragDropModule } from '@angular/cdk/drag-drop';
 import {DropdownModule} from 'primeng/dropdown';
-import { SingleTimeNumberPipePipe } from './shared/pipes/single-time-number-pipe.pipe';
+import { SingleTimeNumberPipe } from './shared/pipes/single-time-number-pipe.pipe';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers/';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -30,7 +30,7 @@ import { ToastrModule } from 'ngx-toastr';
     CalendarComponent,
     CalendarHeaderComponent,
     EventComponent,
-    SingleTimeNumberPipePipe
+    SingleTimeNumberPipe
   ],
   imports: [
     BrowserModule,

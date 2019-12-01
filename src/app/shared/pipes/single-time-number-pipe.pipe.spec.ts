@@ -1,8 +1,8 @@
-import { SingleTimeNumberPipePipe } from './single-time-number-pipe.pipe';
+import { SingleTimeNumberPipe } from './single-time-number-pipe.pipe';
 
-describe('SingleTimeNumberPipePipe', () => {
+describe('SingleTimeNumberPipe', () => {
   it('create an instance', () => {
-    const pipe = new SingleTimeNumberPipePipe();
+    const pipe = new SingleTimeNumberPipe();
     expect(pipe).toBeTruthy();
   });
 });

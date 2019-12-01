@@ -1,5 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CalendarHeaderComponent } from './calendar-header.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from 'src/app/reducers';
 
 
 describe('CalendarHeaderComponent', () => {
@@ -8,7 +11,11 @@ describe('CalendarHeaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CalendarHeaderComponent ]
+      declarations: [ CalendarHeaderComponent ],
+      imports: [
+        StoreModule.forRoot(reducers),
+      ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   }));

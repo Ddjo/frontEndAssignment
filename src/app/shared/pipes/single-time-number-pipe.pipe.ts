@@ -3,7 +3,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 @Pipe({
   name: 'singleTimeNumberPipe'
 })
-export class SingleTimeNumberPipePipe implements PipeTransform {
+export class SingleTimeNumberPipe implements PipeTransform {
 
   // If the number is below 10, add a 0 before
   transform(value: any, ...args: any[]): any {

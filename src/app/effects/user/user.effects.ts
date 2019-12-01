@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { map, mergeMap, catchError } from 'rxjs/operators';
-import { Actions, createEffect, Effect, ofType } from '@ngrx/effects';
+import { Actions, Effect, ofType } from '@ngrx/effects';
 import { LoadUsers, UserActionTypes, UserError, LoadUsersComplete } from '../../actions/user/user.actions';
-import { Store } from '@ngrx/store';
-import { AppState, users } from '../../reducers/';
 import { UserService } from '../../user/user.service';
 import { of } from 'rxjs';
 
@@ -16,7 +14,7 @@ export class UserEffects {
   loadUsers$ = this.actions$
   .pipe(
     ofType<LoadUsers>(UserActionTypes.LoadUsers),
-    mergeMap((action) => this.userService.getUsers()
+    mergeMap(() => this.userService.getUsers()
     .pipe(
       map(usersList => {
         return (new LoadUsersComplete(usersList));
@@ -27,6 +25,6 @@ export class UserEffects {
   );
 
 
-  constructor(private actions$: Actions, private store: Store<AppState>, private userService: UserService) {}
+  constructor(private actions$: Actions, private userService: UserService) {}
 
 }

@@ -1,6 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EventComponent } from './event.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import {CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { SingleTimeNumberPipe } from '../shared/pipes/single-time-number-pipe.pipe';
+import { ToastrModule } from 'ngx-toastr';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from '../reducers';
 
 describe('EventComponent', () => {
   let component: EventComponent;
@@ -8,7 +14,14 @@ describe('EventComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EventComponent ]
+      declarations: [ EventComponent,
+      SingleTimeNumberPipe ],
+      imports: [
+        ReactiveFormsModule,
+        ToastrModule.forRoot(),
+        StoreModule.forRoot(reducers)
+      ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
   }));

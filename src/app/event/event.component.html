@@ -17,7 +17,7 @@
   
     <div class="event-modal-line event-start-day">
       <span>Start date:</span>      
-      <p-calendar [readonlyInput]="true" formControlName="startDate" (onSelect)="onChangeStartDate()"> </p-calendar>
+      <p-calendar [readonlyInput]="true" formControlName="startDate" (onSelect)="onChangeStartDate()" ngDefaultControl> </p-calendar>
     </div>
 
     <div class="event-modal-line event-start-time" *ngIf="!f.entireDay.value">
@@ -38,7 +38,8 @@
         <p-calendar [readonlyInput]="true" 
         [minDate]="f.startDate.value" 
         [defaultDate]="f.startDate.value" 
-        formControlName="endDate"> </p-calendar>  
+        formControlName="endDate"
+        ngDefaultControl> </p-calendar>  
     </div>
 
     <div class="event-modal-line event-end-time" *ngIf="!f.entireDay.value">
@@ -56,7 +57,7 @@
 
     <div class="event-modal-line event-user">
         <span>User :</span>
-        <p-dropdown [options]="usersArray" formControlName="user" placeholder="Select a user">
+        <p-dropdown [options]="usersArray" formControlName="user" placeholder="Select a user" ngDefaultControl>
             <ng-template let-user pTemplate="selectedItem">                 
                 <span [ngStyle]="{'background-color': user.color}" class="user-item">{{user.label}}</span>
             </ng-template>
