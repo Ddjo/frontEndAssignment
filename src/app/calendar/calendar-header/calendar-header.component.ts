@@ -1,13 +1,14 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { AppState, users } from 'src/app/reducers/';
-import { UpdateUsersFilter } from 'src/app/actions/user/user.actions';
+import { ToggleUserVisibility } from 'src/app/actions/user/user.actions';
+
 @Component({
   selector: 'app-calendar-header',
   templateUrl: './calendar-header.component.html',
   styleUrls: ['./calendar-header.component.scss']
 })
-export class CalendarHeaderComponent implements OnInit {
+export class CalendarHeaderComponent {
 
   @ViewChild('datePicker', {static: false}) datePicker: any;
 
@@ -24,9 +25,6 @@ export class CalendarHeaderComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-  }
-
   openDatePicker() {
     this.datePicker.toggle();
   }
@@ -36,7 +34,7 @@ export class CalendarHeaderComponent implements OnInit {
   }
 
   changeSelectedUsers(event) {
-    this.store.dispatch(new UpdateUsersFilter(event.value));
+    this.store.dispatch(new ToggleUserVisibility(event.itemValue));
   }
 
 }

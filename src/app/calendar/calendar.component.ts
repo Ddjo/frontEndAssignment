@@ -5,8 +5,9 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { IEvent } from '../models/event-data/IEvent';
 import { Store, select } from '@ngrx/store';
-import { AppState, selectedUsers } from '../reducers/';
+import { AppState, users } from '../reducers/';
 import { LoadUsers } from '../actions/user/user.actions';
+import { IUser } from '../models/user-data/IUser';
 
 @Component({
   selector: 'app-calendar',
@@ -33,14 +34,19 @@ export class CalendarComponent {
     this.store.dispatch(new LoadUsers());
 
     // Get the event list of the selected users from the store
-    this.store.pipe(select(selectedUsers)).subscribe(users => {
+    this.store.pipe(select(users)).subscribe(usersList => {
       this.events = [];
 
-      users.forEach(user => {
-        this.events  = this.events.concat(user.events);
+      usersList.filter(x => x.selected === true).forEach(user => {
+        this.events  = this.events.concat(this.addColorToEvents(user));
       });
 
     });
+  }
+
+  addColorToEvents(user: IUser): IEvent[] {
+    // Add color to the event depending on the user
+    return user.events.map(event => ({...event, color: user.color}));
   }
 
   eventClick(event: IEvent) {

@@ -8,12 +8,10 @@ import { UserActions, UserActionTypes } from '../actions/user/user.actions';
 
 export interface UserState {
   users: UserData[];
-  selectedUsers: UserData[];
 }
 
 const initialUserState: UserState = {
   users: [],
-  selectedUsers: []
 };
 
 export interface AppState {
@@ -27,23 +25,41 @@ export function userReducer(state: UserState = initialUserState, action: UserAct
 
       return {
         users: [],
-        selectedUsers: []
       };
 
     case UserActionTypes.LoadUsersComplete :
 
         return {
           users: action.payload,
-          selectedUsers: []
         };
 
-    case UserActionTypes.UpdateUsersFilter :
-        return {
-          users: state.users,
-          selectedUsers: state.users.filter((user) => {
-            return action.payload.find(x => x === user.id);
-            })
-        };
+    case UserActionTypes.ToggleUserVisibility :
+
+      return state.users && state.users.length > 0
+      ? {
+          ...state,
+          users: state.users.map((user) => user.id === action.payload
+              ? {
+                    ...user,
+                    selected: !user.selected
+                }
+              : user)
+        }
+      : state;
+
+    case UserActionTypes.CreateEventForUser :
+
+      return state.users && state.users.length > 0
+      ? {
+          ...state,
+          users: state.users.map((user) => user.id === action.payload.extendedProps.userId
+              ? {
+                    ...user,
+                    events : user.events.concat(action.payload)
+                }
+              : user)
+        }
+      : state;
 
     default:
       return state;
@@ -55,7 +71,5 @@ export const reducers: ActionReducerMap<AppState> = {
 };
 
 export const users = (state: AppState) => state.user.users;
-
-export const selectedUsers = (state: AppState) => state.user.selectedUsers;
 
 export const metaReducers: MetaReducer<any>[] = !environment.production ? [] : [];

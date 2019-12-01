@@ -1,10 +1,11 @@
 import { Action } from '@ngrx/store';
 import { UserData } from '../../models/user-data/user-data';
+import { EventData } from 'src/app/models/event-data/event-data';
 
 export enum UserActionTypes {
   LoadUsers = '[User] Load users',
   LoadUsersComplete = '[User] Load users complete',
-  UpdateUsersFilter = '[User] update user filter',
+  ToggleUserVisibility = '[User] update user visibility',
   CreateEventForUser = '[User] Create event for user',
   UpdateEventForUser = '[User] Update event for user',
   RemoveEventForUser = '[User] remove event for user',
@@ -23,28 +24,28 @@ export class LoadUsersComplete implements Action {
   constructor(public payload: UserData[]) {}
 }
 
-export class UpdateUsersFilter implements Action {
-  readonly type = UserActionTypes.UpdateUsersFilter;
+export class ToggleUserVisibility implements Action {
+  readonly type = UserActionTypes.ToggleUserVisibility;
 
-  constructor(public payload: number[]) {}
+  constructor(public payload: number) {}
 }
 
-// export class CreateEventForUser implements Action {
-//   readonly type = UserActionTypes.LoadUsers;
+export class CreateEventForUser implements Action {
+  readonly type = UserActionTypes.CreateEventForUser;
 
-//   constructor(readonly payload: {UserData: UserData, EventData: EventData}) {}
-// }
+  constructor(public payload: EventData) {}
+}
 
 // export class UpdateEventForUser implements Action {
 //   readonly type = UserActionTypes.LoadUsers;
 
-//   constructor(readonly payload: {UserData: UserData, EventData: EventData}) {}
+//   constructor(readonly payload: {EventData: EventData}) {}
 // }
 
 // export class RemoveEventForUser implements Action {
 //   readonly type = UserActionTypes.LoadUsers;
 
-//   constructor(readonly payload: {UserData: UserData, EventData: EventData}) {}
+//   constructor(readonly payload: {EventData: EventData}) {}
 // }
 
 export class UserError implements Action {
@@ -58,7 +59,8 @@ export class UserError implements Action {
 
 export type UserActions = LoadUsers
                           | LoadUsersComplete
-                          | UpdateUsersFilter
+                          | ToggleUserVisibility
+                          | CreateEventForUser
                           | UserError
                           ;
 

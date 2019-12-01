@@ -1,8 +1,8 @@
 
 export interface IEvent {
     title: string;
-    start: Date;
-    end?: Date;
+    start: string;
+    end?: string;
     extendedProps: {
         userId: number;
         entireDay: boolean
