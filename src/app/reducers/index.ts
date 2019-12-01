@@ -52,7 +52,7 @@ export function userReducer(state: UserState = initialUserState, action: UserAct
       return state.users && state.users.length > 0
       ? {
           ...state,
-          users: state.users.map((user) => user.id === action.payload.extendedProps.userId
+          users: state.users.map((user) => user.id.toString() === action.payload.extendedProps.userId.toString()
               ? {
                     ...user,
                     events : user.events.concat(action.payload)
@@ -60,6 +60,34 @@ export function userReducer(state: UserState = initialUserState, action: UserAct
               : user)
         }
       : state;
+
+    case UserActionTypes.UpdateEventForUser :
+        return state.users && state.users.length > 0
+        ? {
+            ...state,
+            users: state.users.map((user) => user.id === action.payload.extendedProps.userId
+                ? {
+                      ...user,
+                      events : user.events.map((eventItem) => eventItem.id === action.payload.id
+                      ? action.payload
+                      : eventItem),
+                  }
+                : user)
+          }
+        : state;
+
+    case UserActionTypes.RemoveEventForUser :
+        return state.users && state.users.length > 0
+        ? {
+            ...state,
+            users: state.users.map((user) => user.id === action.payload.extendedProps.userId
+                ? {
+                      ...user,
+                      events : user.events.filter(x => x.id !== action.payload.id)
+                  }
+                : user)
+          }
+        : state;
 
     default:
       return state;

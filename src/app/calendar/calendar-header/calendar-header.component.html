@@ -18,7 +18,7 @@
     <div class="date-selection">
         <label class="date-select-label"> Go to date: </label>
         <span class="pi pi-calendar" (click)="openDatePicker()"></span>
-        <p-calendar [(ngModel)]="selectedDate" [readonlyInput]="true" #datePicker> </p-calendar>
+        <p-calendar [(ngModel)]="selectedDate" [readonlyInput]="true" (onSelect)="dateSelected($event)" #datePicker> </p-calendar>
         
     </div>
 </div>

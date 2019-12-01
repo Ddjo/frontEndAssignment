@@ -1,7 +1,9 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, Output } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { AppState, users } from 'src/app/reducers/';
 import { ToggleUserVisibility } from 'src/app/actions/user/user.actions';
+import { EventEmitter } from 'events';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-calendar-header',
@@ -11,6 +13,7 @@ import { ToggleUserVisibility } from 'src/app/actions/user/user.actions';
 export class CalendarHeaderComponent {
 
   @ViewChild('datePicker', {static: false}) datePicker: any;
+  @Output() goToDate = new Subject<Date>();
 
   // users$: Observable<UserData[]>;
   usersToDisplay: any[] = [];
@@ -27,6 +30,10 @@ export class CalendarHeaderComponent {
 
   openDatePicker() {
     this.datePicker.toggle();
+  }
+
+  dateSelected(date) {
+    this.goToDate.next(date);
   }
 
   getUserFromId(id) {

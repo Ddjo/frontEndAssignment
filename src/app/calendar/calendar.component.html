@@ -3,10 +3,10 @@
             <span class="pi pi-times" (click)="closeEventModal()"></span>
         </div>
         <hr>
-        <app-event [(currentEvent)]="selectedEvent"></app-event>
+        <app-event [(currentEvent)]="selectedEvent" (closeEventModal)="closeEventModal()"></app-event>
     </div>
 <div class="calendar-block">
-    <app-calendar-header></app-calendar-header>
+    <app-calendar-header (goToDate)="goToDate($event)"></app-calendar-header>
     <full-calendar class="calendar" 
     [events]="events" 
     [header]="calendarHeaders"
@@ -15,5 +15,6 @@
     eventLimit= "false"
     [plugins]="calendarPlugins"
     (eventClick)="eventClick($event.event)"
-    (dateClick)="dateClick($event)"></full-calendar>
+    (dateClick)="dateClick($event)"
+    #fullCalendar></full-calendar>
 </div>

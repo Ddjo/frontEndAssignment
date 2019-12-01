@@ -1,5 +1,5 @@
 import { Component, ViewChild, Renderer2, ElementRef } from '@angular/core';
-import { OptionsInput} from '@fullcalendar/core';
+import { OptionsInput, Calendar} from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
@@ -17,8 +17,8 @@ import { IUser } from '../models/user-data/IUser';
 export class CalendarComponent {
 
   @ViewChild('eventModal', {static: false}) eventModal: ElementRef;
+  @ViewChild('fullCalendar', {static: false}) fullCalendar;
 
-  calendarOptions: OptionsInput;
   calendarPlugins = [dayGridPlugin, timeGridPlugin, interactionPlugin];
   calendarHeaders = {
     left: 'prev,next',
@@ -49,15 +49,13 @@ export class CalendarComponent {
     return user.events.map(event => ({...event, color: user.color}));
   }
 
-  eventClick(event: IEvent) {
-    this.selectedEvent = event;
-    console.log(this.selectedEvent);
+  eventClick(eventCliked: IEvent) {
+    this.selectedEvent = eventCliked;
   }
 
   dateClick(event) {
-    console.log(event);
-
     this.selectedEvent = {
+      id: null,
       title: '',
       start: event.date,
       extendedProps : {
@@ -65,6 +63,10 @@ export class CalendarComponent {
         userId: null
       }
     };
+  }
+
+  goToDate(date) {
+    this.fullCalendar.calendar.gotoDate(date);
   }
 
   closeEventModal() {

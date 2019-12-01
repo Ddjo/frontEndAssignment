@@ -35,7 +35,10 @@
 
     <div class="event-modal-line event-end">
         <span>End date:</span>
-        <p-calendar [readonlyInput]="true" [minDate]="f.startDate.value" formControlName="endDate"> </p-calendar>  
+        <p-calendar [readonlyInput]="true" 
+        [minDate]="f.startDate.value" 
+        [defaultDate]="f.startDate.value" 
+        formControlName="endDate"> </p-calendar>  
     </div>
 
     <div class="event-modal-line event-end-time" *ngIf="!f.entireDay.value">
@@ -69,6 +72,6 @@
 
   </form>
 
-  <span class="pi pi-trash" *ngIf="!isNewEvent" (click)="deleteEvent()"></span>
+  <span class="pi pi-trash" *ngIf="!isNewEvent" (click)="removeEvent()"></span>
   <span class="pi pi-save" (click)="saveEvent()"></span>
 </div>

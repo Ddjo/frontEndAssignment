@@ -36,17 +36,17 @@ export class CreateEventForUser implements Action {
   constructor(public payload: EventData) {}
 }
 
-// export class UpdateEventForUser implements Action {
-//   readonly type = UserActionTypes.LoadUsers;
+export class UpdateEventForUser implements Action {
+  readonly type = UserActionTypes.UpdateEventForUser;
 
-//   constructor(readonly payload: {EventData: EventData}) {}
-// }
+  constructor(readonly payload: EventData) {}
+}
 
-// export class RemoveEventForUser implements Action {
-//   readonly type = UserActionTypes.LoadUsers;
+export class RemoveEventForUser implements Action {
+  readonly type = UserActionTypes.RemoveEventForUser;
 
-//   constructor(readonly payload: {EventData: EventData}) {}
-// }
+  constructor(readonly payload: EventData) {}
+}
 
 export class UserError implements Action {
   readonly type = UserActionTypes.UserError;
@@ -59,6 +59,8 @@ export class UserError implements Action {
 
 export type UserActions = LoadUsers
                           | LoadUsersComplete
+                          | UpdateEventForUser
+                          | RemoveEventForUser
                           | ToggleUserVisibility
                           | CreateEventForUser
                           | UserError
