@@ -1,9 +1,10 @@
-import { 
+import {
     LoadUsers,
     LoadUsersComplete,
     CreateEventForUser,
     UpdateEventForUser,
     RemoveEventForUser,
+    ToggleUserVisibility,
      } from '../actions/user/user.actions';
 import { initialUserState, userReducer } from './index';
 import { UserData } from '../models/user-data/user-data';
@@ -62,6 +63,23 @@ describe('User Reducer', () => {
 
       expect(result.users[0]).toEqual(
         userTest
+      );
+    });
+  });
+
+  describe('[User] Toggle user visibility', () => {
+    it('should set the first user as visible', () => {
+
+        const state = userReducer(
+            initialUserState,
+            new LoadUsersComplete([userTest])
+        );
+
+        const action = new ToggleUserVisibility(1);
+        const result = userReducer(state, action);
+
+      expect(result.users[0].selected).toEqual(
+        true
       );
     });
   });
