@@ -4,15 +4,18 @@ import {
 } from '@ngrx/store';
 import { environment } from '../../environments/environment';
 import { UserData } from '../models/user-data/user-data';
+import { EntityAdapter, EntityState, createEntityAdapter } from '@ngrx/entity';
 import { UserActions, UserActionTypes } from '../actions/user/user.actions';
 
-export interface UserState {
+export interface UserState extends EntityState<UserData[]> {
   users: UserData[];
 }
 
-const initialUserState: UserState = {
-  users: [],
-};
+export const adapter: EntityAdapter<UserData[]> = createEntityAdapter<UserData[]>();
+
+export const initialUserState: UserState = adapter.getInitialState({
+  users: []
+});
 
 export interface AppState {
   user: UserState;
@@ -23,14 +26,13 @@ export function userReducer(state: UserState = initialUserState, action: UserAct
   switch (action.type) {
     case UserActionTypes.LoadUsers:
 
-      return {
-        users: [],
-      };
+      return {... state};
 
     case UserActionTypes.LoadUsersComplete :
 
         return {
-          users: action.payload,
+          ...state,
+          users: action.payload
         };
 
     case UserActionTypes.ToggleUserVisibility :
